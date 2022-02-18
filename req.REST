@@ -1,0 +1,25 @@
+POST http://localhost:5000/api/content/add
+content-type: application/json
+
+{
+    "title":"Test name 2",
+    "contentType":"book",
+    "finished":true
+}
+
+###
+GET http://localhost:5000/api/content
+
+###
+GET http://localhost:5000/api/content/finished
+
+###
+DELETE http://localhost:5000/api/content/delete/620f1c63c41c84535ff85fcc
+
+###
+PATCH http://localhost:5000/api/content/update/620f1bbadb7bd297958c818c
+content-type: application/json
+
+{
+    "finished":true
+}
