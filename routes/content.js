@@ -31,7 +31,7 @@ router.get("/", async(req,res) => {
 // Get all contents which are finished
 router.get("/finished", async (req, res) => {
 	try {
-		const all = await contentModel.find({finished:true});
+		const all = await contentModel.find({Finished:true});
 		res.status(200).json(all);
 	} catch (error) {
 		res.status(500).json(error);
@@ -54,11 +54,32 @@ router.delete("/delete/:id", async (req, res) => {
 // Chnage finished status
 router.patch("/update/:id", async(req,res) => {
     try {
-        const content = await contentModel.findById(req.params.id)
-        await content.updateOne({$set: req.body});
-        res.status(200).json("The post has been updated")
+        // const content = await contentModel.findById(req.params.id)
+        // const updatedContent = await content.updateOne({$set: req.body});
+        // res.status(200).json(updatedContent)
+        let query = {_id:req.params.id}
+        let update = req.body
+        console.log(query)
+        let options = {new:true}
+        contentModel.findOneAndUpdate(query, update, options,(err,doc) => {
+            if(err) return res.status(500).json(err);
+            res.status(200).json(doc)
+        })
+
     } catch (error) {
         res.status(500).json(err)
+    }
+})
+
+
+router.delete("/delete", async(req,res) => {
+    try {
+        contentModel.deleteMany({}, (err) => {
+            if(err) res.status(500).json(err);
+            res.status(200).json({"message":"Deletion successfull"});
+        })
+    } catch (error) {
+        
     }
 })
 

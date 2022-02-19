@@ -5,7 +5,7 @@ const contentSchema = mongoose.Schema(
 		title: {type: String, required:true},
 		dateAdded: { type: Date, default: Date.now },
 		contentType: String,
-		finished: { type: Boolean, default: false },
+		Finished: { type: Boolean, default: false },
 	},
 	{ timestamps: true }
 );

@@ -17,9 +17,12 @@ GET http://localhost:5000/api/content/finished
 DELETE http://localhost:5000/api/content/delete/620f1c63c41c84535ff85fcc
 
 ###
-PATCH http://localhost:5000/api/content/update/620f1bbadb7bd297958c818c
+PATCH http://localhost:5000/api/content/update/6211091a965b6532817e65fc
 content-type: application/json
 
 {
-    "finished":true
+    "Finished":true
 }
+
+###
+DELETE http://localhost:5000/api/content/delete
