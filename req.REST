@@ -41,6 +41,6 @@ Content-Type: application/json
 
 {
     "name":"Manish",
-    "email":"hey@r.me",
+    "email":"hey@rqa.me",
     "password":"passwerd"
 }

@@ -28,7 +28,7 @@ router.post("/add", async (req,res) => {
 
 router.get("/", async(req,res) => {
     try {
-        console.log(process.env.JWT_SECRET);
+        // console.log(process.env.JWT_SECRET);
         const token = req.headers["x-access-token"];
         
         const decoded = jwt.verify(token, process.env.JWT_SECRET);

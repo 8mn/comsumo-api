@@ -45,22 +45,25 @@ router.post("/login", async (req, res) => {
 
 router.post("/register", async (req, res) => {
 	console.log(req.body);
+
+
+
 	try {
 		const newPassword = await bcrypt.hash(req.body.password, 10);
-		await User.create({
+		const user = await User.create({
 			name: req.body.name,
 			email: req.body.email,
 			password: newPassword,
 		});
 		const token = jwt.sign(
 			{
-				name: req.body.name,
+				user_id: user._id,
 				email: req.body.email,
 			},
 			process.env.JWT_SECRET
 		);
 
-		return res.status(200).json({ user: token });
+		return res.json({ status: "ok", user: token });
 	} catch (err) {
         console.log(err)
 		res.status(400).json({ status: "error", error: err });
