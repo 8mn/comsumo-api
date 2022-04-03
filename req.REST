@@ -2,13 +2,20 @@ POST http://localhost:5000/api/content/add
 content-type: application/json
 
 {
-    "title":"Test name 2",
+    "title":"Test",
     "contentType":"book",
-    "finished":true
+    "finished":true,
+    "userId":"62497d3971382a2bac3edab1"
 }
 
 ###
 GET http://localhost:5000/api/content
+Content-Type: application/json
+
+
+{
+    "userId": "62497d3971382a2bac3edab1" 
+}
 
 ###
 GET http://localhost:5000/api/content/finished
@@ -26,3 +33,14 @@ content-type: application/json
 
 ###
 DELETE http://localhost:5000/api/content/delete
+
+
+###
+POST http://localhost:5000/api/user/register
+Content-Type: application/json
+
+{
+    "name":"Manish",
+    "email":"hey@r.me",
+    "password":"passwerd"
+}

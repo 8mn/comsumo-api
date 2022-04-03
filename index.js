@@ -4,6 +4,8 @@ import dotenv from "dotenv"
 import mongoose from "mongoose";
 import contentRoutes from "./routes/content.js"
 
+import userRoutes from "./routes/user.js"
+
 
 
 
@@ -63,5 +65,6 @@ api/delete/:id  DELETE remove a content by id
 
 
 app.use("/api/content", contentRoutes)
+app.use("/api/user", userRoutes)
 
 

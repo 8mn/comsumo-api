@@ -1,11 +1,17 @@
 import { Router } from "express";
 import contentModel from "../models/content.js";
-
+import jwt from "jsonwebtoken"
 
 const router = Router()
 
 // Add a new content
 router.post("/add", async (req,res) => {
+
+    // const decoded = jwt.verify(token, "secret123");
+	// 	console.log(decoded);
+	// 	const user_id = decoded.user_id;
+
+
     const newContent = new contentModel(req.body)
     try {
         const savedContent = await newContent.save()
@@ -20,8 +26,19 @@ router.post("/add", async (req,res) => {
 
 router.get("/", async(req,res) => {
     try {
-        const all = await contentModel.find({})
+
+        const token = req.headers["x-access-token"];
+        
+        const decoded = jwt.verify(token, "secret123");
+        // console.log(decoded)
+		const user_id = decoded.user_id;
+
+        const all = await contentModel.find({ userId: user_id });
         res.status(200).json(all);
+
+
+        // console.log(token)
+        // console.log("token")
     } catch (error) {
         res.status(500).json(error);
     }
