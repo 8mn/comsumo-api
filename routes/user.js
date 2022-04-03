@@ -3,7 +3,8 @@ import bcrypt from "bcrypt"
 
 const router = Router()
 import jwt from "jsonwebtoken";
-
+import dotenv from "dotenv";
+dotenv.config();
 
 import User from "../models/user.js"
 
@@ -30,7 +31,7 @@ router.post("/login", async (req, res) => {
 				user_id: user._id,
 				email: user.email,
 			},
-			"secret123"
+			process.env.JWT_SECRET
 		);
 
 		return res.json({ status: "ok", user: token });
@@ -56,7 +57,7 @@ router.post("/register", async (req, res) => {
 				name: req.body.name,
 				email: req.body.email,
 			},
-			"secret123"
+			process.env.JWT_SECRET
 		);
 
 		return res.status(200).json({ user: token });

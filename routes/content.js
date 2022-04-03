@@ -3,6 +3,8 @@ import contentModel from "../models/content.js";
 import jwt from "jsonwebtoken"
 
 const router = Router()
+import dotenv from "dotenv";
+dotenv.config();
 
 // Add a new content
 router.post("/add", async (req,res) => {
@@ -26,10 +28,10 @@ router.post("/add", async (req,res) => {
 
 router.get("/", async(req,res) => {
     try {
-
+        console.log(process.env.JWT_SECRET);
         const token = req.headers["x-access-token"];
         
-        const decoded = jwt.verify(token, "secret123");
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         // console.log(decoded)
 		const user_id = decoded.user_id;
 
