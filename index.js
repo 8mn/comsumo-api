@@ -16,14 +16,15 @@ const PORT = 5000;
 
 
 dotenv.config()
-app.use(
-	cors({
-		methods: "GET,POST,PATCH,DELETE,OPTIONS",
-		optionsSuccessStatus: 200,
-		origin: "https://kontent-server.herokuapp.com",
-	})
-);
-app.options("*", cors());
+// app.use(
+// 	cors({
+// 		methods: "GET,POST,PATCH,DELETE,OPTIONS",
+// 		optionsSuccessStatus: 200,
+// 		origin: "https://kontent-server.herokuapp.com",
+// 	})
+// );
+// app.options("*", cors());
+app.use(cors())
 
 app.use(helmet())
 
