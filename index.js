@@ -13,16 +13,20 @@ const app = express();
 
 const PORT = 5000;
 
-let corsOption = {
-	origin: `https://kontent-server.herokuapp.com`,
-};
 
 
 dotenv.config()
-
+app.use(
+	cors({
+		methods: "GET,POST,PATCH,DELETE,OPTIONS",
+		optionsSuccessStatus: 200,
+		origin: "https://kontent-server.herokuapp.com",
+	})
+);
+app.options("*", cors());
 
 app.use(helmet())
-app.use(cors(corsOption));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
