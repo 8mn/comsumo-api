@@ -41,6 +41,17 @@ Content-Type: application/json
 
 {
     "name":"Manish",
-    "email":"hey@rqa.me",
+    "email":"hey@a.me",
+    "password":"passwerd"
+}
+
+
+###
+POST http://localhost:5000/api/user/login
+Content-Type: application/json
+
+
+{
+    "email":"hey@a.me",
     "password":"passwerd"
 }

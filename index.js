@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import contentRoutes from "./routes/content.js"
 
 import userRoutes from "./routes/user.js"
-
+import helmet from "helmet";
 
 
 
@@ -21,7 +21,7 @@ let corsOption = {
 dotenv.config()
 
 
-
+app.use(helmet())
 app.use(cors(corsOption));
 
 app.use(express.json());
@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(PORT, () =>
+app.listen(process.env.PORT || 3000, () =>
 	console.log(`Server running on http://localhost:${PORT}`)
 );
 
