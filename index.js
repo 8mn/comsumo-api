@@ -14,7 +14,7 @@ const app = express();
 const PORT = 5000;
 
 let corsOption = {
-	origin: `https://kontent-server.herokuapp.com/`,
+	origin: `https://kontent-server.herokuapp.com`,
 };
 
 
